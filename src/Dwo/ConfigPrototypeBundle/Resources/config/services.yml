@@ -1,0 +1,11 @@
+services:
+
+  dwo_config_prototype.handler.prototypes:
+    class: Dwo\ConfigPrototype\Handler\ConfigurationHandler
+    arguments: ["%dwo_config_prototype.prototypes%"]
+
+  dwo_config_prototype.validator.config_prototype:
+    class: Dwo\ConfigPrototype\Validator\ConfigPrototypeValidator
+    arguments: ["@dwo_config_prototype.handler.prototypes"]
+    tags:
+      - { name: 'validator.constraint_validator', alias: 'config_prototype' }
